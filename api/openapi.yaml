@@ -101,6 +101,40 @@ paths:
       summary: Returns an movie by ID
       tags:
       - Movie watchlist
+    patch:
+      parameters:
+      - description: ID of movie
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+        description: Updated movie
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+          description: successful updated movie
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+      summary: Update an movie by ID
+      tags:
+      - Movie watchlist
     put:
       parameters:
       - description: ID of movie
@@ -157,9 +191,10 @@ components:
         name: name
         genre: genre
         description: description
+        posterUri: posterUri
         id: id
         type: type
-        poster: poster
+        oscars: 0
       properties:
         id:
           description: Id of the movie
@@ -183,9 +218,12 @@ components:
         type:
           description: Type of the movie
           type: string
-        poster:
+        posterUri:
           description: Poster-Uri of the movie
           type: string
+        oscars:
+          description: Number of oscars
+          type: integer
       required:
       - actors
       - description
@@ -193,7 +231,6 @@ components:
       - genre
       - id
       - name
-      - poster
       - type
       type: object
     Error:

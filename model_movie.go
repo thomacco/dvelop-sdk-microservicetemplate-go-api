@@ -30,14 +30,16 @@ type Movie struct {
 	// Type of the movie
 	Type string `json:"type"`
 	// Poster-Uri of the movie
-	Poster string `json:"poster"`
+	PosterUri *string `json:"posterUri,omitempty"`
+	// Number of oscars
+	Oscars *int32 `json:"oscars,omitempty"`
 }
 
 // NewMovie instantiates a new Movie object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMovie(id string, name string, genre string, director string, actors []string, description string, type_ string, poster string) *Movie {
+func NewMovie(id string, name string, genre string, director string, actors []string, description string, type_ string) *Movie {
 	this := Movie{}
 	this.Id = id
 	this.Name = name
@@ -46,7 +48,6 @@ func NewMovie(id string, name string, genre string, director string, actors []st
 	this.Actors = actors
 	this.Description = description
 	this.Type = type_
-	this.Poster = poster
 	return &this
 }
 
@@ -226,28 +227,68 @@ func (o *Movie) SetType(v string) {
 	o.Type = v
 }
 
-// GetPoster returns the Poster field value
-func (o *Movie) GetPoster() string {
-	if o == nil {
+// GetPosterUri returns the PosterUri field value if set, zero value otherwise.
+func (o *Movie) GetPosterUri() string {
+	if o == nil || o.PosterUri == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Poster
+	return *o.PosterUri
 }
 
-// GetPosterOk returns a tuple with the Poster field value
+// GetPosterUriOk returns a tuple with the PosterUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Movie) GetPosterOk() (*string, bool) {
-	if o == nil  {
+func (o *Movie) GetPosterUriOk() (*string, bool) {
+	if o == nil || o.PosterUri == nil {
 		return nil, false
 	}
-	return &o.Poster, true
+	return o.PosterUri, true
 }
 
-// SetPoster sets field value
-func (o *Movie) SetPoster(v string) {
-	o.Poster = v
+// HasPosterUri returns a boolean if a field has been set.
+func (o *Movie) HasPosterUri() bool {
+	if o != nil && o.PosterUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPosterUri gets a reference to the given string and assigns it to the PosterUri field.
+func (o *Movie) SetPosterUri(v string) {
+	o.PosterUri = &v
+}
+
+// GetOscars returns the Oscars field value if set, zero value otherwise.
+func (o *Movie) GetOscars() int32 {
+	if o == nil || o.Oscars == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Oscars
+}
+
+// GetOscarsOk returns a tuple with the Oscars field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Movie) GetOscarsOk() (*int32, bool) {
+	if o == nil || o.Oscars == nil {
+		return nil, false
+	}
+	return o.Oscars, true
+}
+
+// HasOscars returns a boolean if a field has been set.
+func (o *Movie) HasOscars() bool {
+	if o != nil && o.Oscars != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOscars gets a reference to the given int32 and assigns it to the Oscars field.
+func (o *Movie) SetOscars(v int32) {
+	o.Oscars = &v
 }
 
 func (o Movie) MarshalJSON() ([]byte, error) {
@@ -273,8 +314,11 @@ func (o Movie) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if true {
-		toSerialize["poster"] = o.Poster
+	if o.PosterUri != nil {
+		toSerialize["posterUri"] = o.PosterUri
+	}
+	if o.Oscars != nil {
+		toSerialize["oscars"] = o.Oscars
 	}
 	return json.Marshal(toSerialize)
 }

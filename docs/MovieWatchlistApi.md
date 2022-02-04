@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**MoviesGet**](MovieWatchlistApi.md#MoviesGet) | **Get** /movies | Return all movies
 [**MoviesIdDelete**](MovieWatchlistApi.md#MoviesIdDelete) | **Delete** /movies/{id} | Delete an movie by ID
 [**MoviesIdGet**](MovieWatchlistApi.md#MoviesIdGet) | **Get** /movies/{id} | Returns an movie by ID
+[**MoviesIdPatch**](MovieWatchlistApi.md#MoviesIdPatch) | **Patch** /movies/{id} | Update an movie by ID
 [**MoviesIdPut**](MovieWatchlistApi.md#MoviesIdPut) | **Put** /movies/{id} | Update an movie by ID
 [**MoviesPost**](MovieWatchlistApi.md#MoviesPost) | **Post** /movies | Create a new movie
 
@@ -205,6 +206,76 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## MoviesIdPatch
+
+> Movie MoviesIdPatch(ctx, id).Movie(movie).Execute()
+
+Update an movie by ID
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of movie
+    movie := *openapiclient.NewMovie("Id_example", "Name_example", "Genre_example", "Director_example", []string{"Actors_example"}, "Description_example", "Type_example") // Movie | Updated movie
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MovieWatchlistApi.MoviesIdPatch(context.Background(), id).Movie(movie).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MovieWatchlistApi.MoviesIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MoviesIdPatch`: Movie
+    fmt.Fprintf(os.Stdout, "Response from `MovieWatchlistApi.MoviesIdPatch`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | ID of movie | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMoviesIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **movie** | [**Movie**](Movie.md) | Updated movie | 
+
+### Return type
+
+[**Movie**](Movie.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## MoviesIdPut
 
 > Movie MoviesIdPut(ctx, id).Movie(movie).Execute()
@@ -225,7 +296,7 @@ import (
 
 func main() {
     id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of movie
-    movie := *openapiclient.NewMovie("Id_example", "Name_example", "Genre_example", "Director_example", []string{"Actors_example"}, "Description_example", "Type_example", "Poster_example") // Movie | Updated movie
+    movie := *openapiclient.NewMovie("Id_example", "Name_example", "Genre_example", "Director_example", []string{"Actors_example"}, "Description_example", "Type_example") // Movie | Updated movie
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -294,7 +365,7 @@ import (
 )
 
 func main() {
-    movie := *openapiclient.NewMovie("Id_example", "Name_example", "Genre_example", "Director_example", []string{"Actors_example"}, "Description_example", "Type_example", "Poster_example") // Movie | Movie to storage
+    movie := *openapiclient.NewMovie("Id_example", "Name_example", "Genre_example", "Director_example", []string{"Actors_example"}, "Description_example", "Type_example") // Movie | Movie to storage
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

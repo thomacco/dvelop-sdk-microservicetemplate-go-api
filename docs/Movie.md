@@ -11,13 +11,14 @@ Name | Type | Description | Notes
 **Actors** | **[]string** |  | 
 **Description** | **string** | Description of the movie | 
 **Type** | **string** | Type of the movie | 
-**Poster** | **string** | Poster-Uri of the movie | 
+**PosterUri** | Pointer to **string** | Poster-Uri of the movie | [optional] 
+**Oscars** | Pointer to **int32** | Number of oscars | [optional] 
 
 ## Methods
 
 ### NewMovie
 
-`func NewMovie(id string, name string, genre string, director string, actors []string, description string, type_ string, poster string, ) *Movie`
+`func NewMovie(id string, name string, genre string, director string, actors []string, description string, type_ string, ) *Movie`
 
 NewMovie instantiates a new Movie object
 This constructor will assign default values to properties that have it defined,
@@ -172,25 +173,55 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
-### GetPoster
+### GetPosterUri
 
-`func (o *Movie) GetPoster() string`
+`func (o *Movie) GetPosterUri() string`
 
-GetPoster returns the Poster field if non-nil, zero value otherwise.
+GetPosterUri returns the PosterUri field if non-nil, zero value otherwise.
 
-### GetPosterOk
+### GetPosterUriOk
 
-`func (o *Movie) GetPosterOk() (*string, bool)`
+`func (o *Movie) GetPosterUriOk() (*string, bool)`
 
-GetPosterOk returns a tuple with the Poster field if it's non-nil, zero value otherwise
+GetPosterUriOk returns a tuple with the PosterUri field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPoster
+### SetPosterUri
 
-`func (o *Movie) SetPoster(v string)`
+`func (o *Movie) SetPosterUri(v string)`
 
-SetPoster sets Poster field to given value.
+SetPosterUri sets PosterUri field to given value.
 
+### HasPosterUri
+
+`func (o *Movie) HasPosterUri() bool`
+
+HasPosterUri returns a boolean if a field has been set.
+
+### GetOscars
+
+`func (o *Movie) GetOscars() int32`
+
+GetOscars returns the Oscars field if non-nil, zero value otherwise.
+
+### GetOscarsOk
+
+`func (o *Movie) GetOscarsOk() (*int32, bool)`
+
+GetOscarsOk returns a tuple with the Oscars field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOscars
+
+`func (o *Movie) SetOscars(v int32)`
+
+SetOscars sets Oscars field to given value.
+
+### HasOscars
+
+`func (o *Movie) HasOscars() bool`
+
+HasOscars returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

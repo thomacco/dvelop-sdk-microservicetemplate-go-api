@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *MovieWatchlistApi* | [**MoviesGet**](docs/MovieWatchlistApi.md#moviesget) | **Get** /movies | Return all movies
 *MovieWatchlistApi* | [**MoviesIdDelete**](docs/MovieWatchlistApi.md#moviesiddelete) | **Delete** /movies/{id} | Delete an movie by ID
 *MovieWatchlistApi* | [**MoviesIdGet**](docs/MovieWatchlistApi.md#moviesidget) | **Get** /movies/{id} | Returns an movie by ID
+*MovieWatchlistApi* | [**MoviesIdPatch**](docs/MovieWatchlistApi.md#moviesidpatch) | **Patch** /movies/{id} | Update an movie by ID
 *MovieWatchlistApi* | [**MoviesIdPut**](docs/MovieWatchlistApi.md#moviesidput) | **Put** /movies/{id} | Update an movie by ID
 *MovieWatchlistApi* | [**MoviesPost**](docs/MovieWatchlistApi.md#moviespost) | **Post** /movies | Create a new movie
 

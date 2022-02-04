@@ -1,4 +1,4 @@
-module github.com/thomacco/dvelop-sdk-microservicetemplate-go-api
+module github.com/GIT_USER_ID/GIT_REPO_ID
 
 go 1.13
 
