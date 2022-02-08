@@ -4,7 +4,8 @@ info:
   title: Microservice template
   version: 1.0.0
 servers:
-- url: http://localhost:8080/microservicetemplate
+- description: AWS deployment server
+  url: https://d01aws001.fts.d-3.de/microservicetemplate
 paths:
   /movies:
     get:
@@ -99,40 +100,6 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: unexpected error
       summary: Returns an movie by ID
-      tags:
-      - Movie watchlist
-    patch:
-      parameters:
-      - description: ID of movie
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Movie'
-        description: Updated movie
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Movie'
-          description: successful updated movie
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: unexpected error
-      summary: Update an movie by ID
       tags:
       - Movie watchlist
     put:

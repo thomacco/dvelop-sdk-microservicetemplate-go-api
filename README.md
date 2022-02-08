@@ -1,4 +1,4 @@
-# Go API client for openapi
+# Go API client for microserviceTemplateApi
 
 Mircoservice template with movie watchlist example
 
@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import openapi "github.com/GIT_USER_ID/GIT_REPO_ID"
+import microserviceTemplateApi "github.com/d-velop/dvelop-sdk-microservicetemplate-go"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -40,7 +40,7 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), openapi.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), microserviceTemplateApi.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -48,7 +48,7 @@ ctx := context.WithValue(context.Background(), openapi.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), openapi.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), microserviceTemplateApi.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -62,10 +62,10 @@ An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
-ctx := context.WithValue(context.Background(), openapi.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), microserviceTemplateApi.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), microserviceTemplateApi.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -74,14 +74,13 @@ ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080/microservicetemplate*
+All URIs are relative to *https://d01aws001.fts.d-3.de/microservicetemplate*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MovieWatchlistApi* | [**MoviesGet**](docs/MovieWatchlistApi.md#moviesget) | **Get** /movies | Return all movies
 *MovieWatchlistApi* | [**MoviesIdDelete**](docs/MovieWatchlistApi.md#moviesiddelete) | **Delete** /movies/{id} | Delete an movie by ID
 *MovieWatchlistApi* | [**MoviesIdGet**](docs/MovieWatchlistApi.md#moviesidget) | **Get** /movies/{id} | Returns an movie by ID
-*MovieWatchlistApi* | [**MoviesIdPatch**](docs/MovieWatchlistApi.md#moviesidpatch) | **Patch** /movies/{id} | Update an movie by ID
 *MovieWatchlistApi* | [**MoviesIdPut**](docs/MovieWatchlistApi.md#moviesidput) | **Put** /movies/{id} | Update an movie by ID
 *MovieWatchlistApi* | [**MoviesPost**](docs/MovieWatchlistApi.md#moviespost) | **Post** /movies | Create a new movie
 
